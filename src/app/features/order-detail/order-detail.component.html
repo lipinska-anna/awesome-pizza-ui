@@ -1,0 +1,46 @@
+<div id="main" class="d-flex flex-column justify-content-end align-items-center">
+  <h2 class="mb-4 fix-width d-grid"><strong>Monitor your order</strong></h2>
+
+  @if (order$ | async; as order) {
+
+    <div class="mb-3 fix-width d-flex justify-content-between">
+      <label><strong>#{{order.id}}</strong></label>
+    </div>
+
+    <div class="mb-3 fix-width d-flex justify-content-between">
+      <label><strong>Name</strong></label>
+      <label>{{order.customerName}}</label>
+    </div>
+
+    <div class="mb-3 fix-width d-flex justify-content-between">
+      <label><strong>Pizza</strong></label>
+      <label>{{order.pizzaType}}</label>
+    </div>
+
+    <div class="mb-3 fix-width d-flex justify-content-between">
+      <label><strong>Price</strong></label>
+      <label>{{order.price | currency:'EUR'}}</label>
+    </div>
+
+    <div class="mb-3 fix-width d-flex justify-content-between">
+      <label><strong>Requested on</strong></label>
+      <label>{{order.createdOn | date:'short'}}</label>
+    </div>
+
+    <div class="mb-3 fix-width d-flex justify-content-between">
+      <label><strong>Status</strong></label>
+      <label class="badge" [ngClass]="OrderStatusMapTypes[order.status]">
+        <span [ngClass]="{'badge-loading': order.status !== OrderStatusEnum.READY}">{{order.status}}</span>
+      </label>
+    </div>
+  } @else {
+    Oops! Your order isn't here
+  }
+
+  <hr class="mb-4 fix-width"/>
+  <div class="mb-3 fix-width d-grid">
+    <button class="btn btn-outline-primary" (click)="navigateToCustomerArea()">Back
+    </button>
+  </div>
+</div>
+

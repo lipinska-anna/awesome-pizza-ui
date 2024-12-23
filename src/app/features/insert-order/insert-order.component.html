@@ -1,0 +1,47 @@
+<div id="main" class="d-flex flex-column justify-content-end align-items-center">
+  <div class="mb-4 fix-width d-grid">
+    <h2 ><strong>Order your pizza</strong></h2>
+    <label class="text-muted">* Mandatory fields</label>
+  </div>
+
+  <form [formGroup]="orderForm"
+        (ngSubmit)="submit()"
+        class="fix-width d-grid">
+    <div class="mb-3">
+      <label>* Insert your name</label>
+      <input class="form-control"
+             required
+             formControlName="customerName"
+             type="text"
+             placeholder="Insert your name..."/>
+    </div>
+
+    <div class="mb-3">
+      <label>* Choose your pizza</label>
+      <select class="form-control"
+              required
+              formControlName="pizzaType">
+        <option selected disabled [ngValue]="null">Choose your pizza...</option>
+        <option *ngFor="let pizza of Pizzas | enumValues" [ngValue]="pizza">{{ pizza }} €{{ Pizzas[pizza] }}</option>
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <label>Allergens notes</label>
+      <textarea class="form-control"
+             formControlName="allergensNote"
+             placeholder="Insert your allergens..."></textarea>
+    </div>
+    <button class="btn btn-primary"
+            type="submit"
+            [disabled]="orderForm.invalid">
+      Ready!
+    </button>
+
+  </form>
+  <hr class="my-4 fix-width"/>
+  <div class="mb-3 fix-width d-grid">
+    <button class="btn btn-outline-primary" (click)="location.back()">Back
+    </button>
+  </div>
+</div>

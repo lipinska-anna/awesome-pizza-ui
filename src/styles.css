@@ -1,1 +1,21 @@
 /* You can add global styles to this file, and also import other style files */
+.size-6 {
+  height: 24px;
+  width: 24px;
+}
+
+.fix-width {
+  width: 21rem;
+}
+
+:root{
+  --bs-border-radius: 1rem;
+}
+
+.input-group-append {
+  button {
+    border-top-left-radius: 0 !important;
+    border-bottom-left-radius: 0 !important;
+  }
+
+}

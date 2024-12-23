@@ -1,0 +1,10 @@
+<span class="badge rounded-pill bg-primary p-3" [@fadeInOut] (click)="onNotificationClick()">
+      <strong class="me-auto">{{ notificationSignal()?.title }}</strong>
+  @if(notificationSignal()?.body) {
+    <hr class="mb-4 fix-width"/>
+
+    <div class="toast-body">
+      {{ notificationSignal()?.body }}
+    </div>
+    }
+</span>
